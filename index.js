@@ -16,6 +16,7 @@ client.on('guildMemberAdd', member => {
     // The bot will automaticly assign the role to the new member if enough permissions.
     if (roles.joinRole) {
         member.addRole(roles.joinRole)
+        .then(() => webhook.send(`**New Member has Joined:** ${member}`))
         .catch((reason) => { webhook.send(reason) });
     };
 });
@@ -26,14 +27,14 @@ client.on('presenceUpdate', (oldMember, newMember) => {
         if (roles.fortniteRole && newMember.presence.game.name == "Fortnite") {
             if (!newMember.roles.has(roles.fortniteRole)) {
                 newMember.addRole(roles.fortniteRole)
-                .then(webhook.send(`Fortnite role has been set to ${newMember.user}`));
+                .then(webhook.send(`**Fortnite role** has been given to ${newMember.user}`));
             }
         }
 
         if (roles.minecraftRole && newMember.presence.game.name == "Minecraft") {
             if (!newMember.roles.has(roles.minecraftRole)) {
                 newMember.addRole(roles.minecraftRole)
-                .then(webhook.send(`Minecraft role has been set to ${newMember.user}`));
+                .then(webhook.send(`**Minecraft role** has been given to ${newMember.user}`));
             }
         }
     }
