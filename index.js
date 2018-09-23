@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const config = require('./data/config.json');
-const roles = require('./data/roles.json');
-const {token} = require('./data/token.json');
+const config = require('data/config.json');
+const roles = require('data/roles.json');
+const {token} = require('data/token.json');
 const client = new Discord.Client({autoReconnect:true});
 
 client.on('ready', () => {
