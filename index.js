@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require('./data/config.json');
+const roles = require('./data/roles.json');
 const {token} = require('./data/token.json');
 const client = new Discord.Client({autoReconnect:true});
 
@@ -12,8 +13,8 @@ client.on('ready', () => {
 client.on('guildMemberAdd', member => {
     // If a role in setup in the config file.
     // The bot will automaticly assign the role to the new member if enough permissions.
-    if (config.joinRole) {
-        member.addRole(config.joinRole)
+    if (roles.joinRole) {
+        member.addRole(roles.joinRole)
         .catch((reason) => { console.log(reason) });
     };
 });
