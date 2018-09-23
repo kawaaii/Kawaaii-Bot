@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const config = require('./data/config.json');
 const roles = require('./data/roles.json');
-const {token} = require('./data/token.json');
+const {token, wh_id, wh_token} = require('./data/token.json'); 
 const client = new Discord.Client({autoReconnect:true});
 
 client.on('ready', () => {
@@ -25,14 +25,14 @@ client.on('presenceUpdate', (oldMember, newMember) => {
         if (roles.fortniteRole && newMember.presence.game.name == "Fortnite") {
             if (!newMember.roles.has(roles.fortniteRole)) {
                 newMember.addRole(roles.fortniteRole)
-                .then(console.log(`Role Set to ${newMember.user.username}`));
+                .then(console.log(`Fortnite role has been set to ${newMember.user.username}`));
             }
         }
 
         if (roles.minecraftRole && newMember.presence.game.name == "Minecraft") {
             if (!newMember.roles.has(roles.minecraftRole)) {
                 newMember.addRole(roles.minecraftRole)
-                .then(console.log(`Role Set to ${newMember.user.username}`));
+                .then(console.log(`Minecraft role has been set to ${newMember.user.username}`));
             }
         }
     }

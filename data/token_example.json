@@ -1,3 +1,5 @@
 {
-    "token": "Put the super secret token here, and remove '_example' from the file-name."
+    "token": "Put the super secret token here, and remove '_example' from the file-name.",
+    "wb_id": "ID of the Webhook",
+    "wb_token": "Token of the Webhook"
 }
