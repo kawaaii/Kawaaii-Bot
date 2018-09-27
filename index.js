@@ -9,6 +9,7 @@ client.on('ready', () => {
     // Messages the bot will sent in the console, when the bot is ready and connected.
     console.log(`I'm ready and running!`);
     console.log(`${client.users.size} members found.`)
+    console.log(roles.PresenceRoles);
 });
 
 client.on('guildMemberAdd', member => {
@@ -24,20 +25,36 @@ client.on('guildMemberAdd', member => {
 client.on('presenceUpdate', (oldMember, newMember) => {
 
     if (newMember.presence.game) {
-        if (roles.fortniteRole && newMember.presence.game.name == "Fortnite") {
-            if (!newMember.roles.has(roles.fortniteRole)) {
-                newMember.addRole(roles.fortniteRole)
-                .then(webhook.send(`**Fortnite role** has been given to ${newMember.user}`));
-            }
-        }
-
-        if (roles.minecraftRole && newMember.presence.game.name == "Minecraft") {
-            if (!newMember.roles.has(roles.minecraftRole)) {
-                newMember.addRole(roles.minecraftRole)
-                .then(webhook.send(`**Minecraft role** has been given to ${newMember.user}`));
+        if (roles.PresenceRoles.find(item=>item.gameName == newMember.presence.game.name)) {
+            const gameRole = roles.PresenceRoles.find(item=>item.gameName == newMember.presence.game.name);
+            if (!newMember.roles.has(gameRole.roleID)) {
+                newMember.addRole(gameRole.roleID)
+                .then((member) => {
+                    try {
+                        member.send(`You have been assigned the "${gameRole.gameName}" role automatically.\nBecause I detected that you were playing **${gameRole.gameName}**.`);
+                    } catch (e) { };
+                    webhook.send(`**${gameRole.gameName}** role has been given to ${member.user}`);
+                })
+                .catch((error) => {console.log(error)})
             }
         }
     }
+
+    //if (newMember.presence.game) {
+        //if (roles.fortniteRole && newMember.presence.game.name == "Fortnite") {
+            //if (!newMember.roles.has(roles.fortniteRole)) {
+                //newMember.addRole(roles.fortniteRole)
+                //.then(webhook.send(`**Fortnite role** has been given to ${newMember.user}`));
+            //}
+        //}
+
+        //if (roles.minecraftRole && newMember.presence.game.name == "Minecraft") {
+            //if (!newMember.roles.has(roles.minecraftRole)) {
+                //newMember.addRole(roles.minecraftRole)
+                //.then(webhook.send(`**Minecraft role** has been given to ${newMember.user}`));
+            //}
+        //}
+    //}
 
 });
 
