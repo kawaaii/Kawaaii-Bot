@@ -40,22 +40,6 @@ client.on('presenceUpdate', (oldMember, newMember) => {
         }
     }
 
-    //if (newMember.presence.game) {
-        //if (roles.fortniteRole && newMember.presence.game.name == "Fortnite") {
-            //if (!newMember.roles.has(roles.fortniteRole)) {
-                //newMember.addRole(roles.fortniteRole)
-                //.then(webhook.send(`**Fortnite role** has been given to ${newMember.user}`));
-            //}
-        //}
-
-        //if (roles.minecraftRole && newMember.presence.game.name == "Minecraft") {
-            //if (!newMember.roles.has(roles.minecraftRole)) {
-                //newMember.addRole(roles.minecraftRole)
-                //.then(webhook.send(`**Minecraft role** has been given to ${newMember.user}`));
-            //}
-        //}
-    //}
-
 });
 
 client.on('message', message => {
