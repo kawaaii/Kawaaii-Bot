@@ -1,14 +1,14 @@
 {
     "joinRole": "493220872585478174",
 
-    "PresenceRoles": [
+    "SelfAssignableRoles": [
         {
-            "gameName": "Fortnite",
+            "roleName": "Test",
             "roleID": "492500583794737152"
         },
         {
-            "gameName": "Minecraft",
-            "roleID": "493384424944173056"
+            "roleName": "Test",
+            "roleID": "492500583794737152"
         }
     ]
 }
